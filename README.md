@@ -13,7 +13,7 @@
 
 ## Visit live on heroku
 
- * [News Scrape...coming soon]()
+ * [News Scrape...coming soon](https://rowgregory.github.io)
 
  * ![]()
      
