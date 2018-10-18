@@ -1,9 +1,15 @@
 const exp = require('express');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = exp();
 
 const PORT = process.env.PORT || 3000;
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://root:root@192.168.99.100/mongoHeadlines?authSource=admin";
+
+mongoose.Promise = Promise;
+mongoose.connect(MONGODB_URI);
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(exp.static("public"));
