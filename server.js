@@ -1,7 +1,6 @@
 const exp = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
 const app = exp();
 
 const PORT = process.env.PORT || 3000;
@@ -26,8 +25,41 @@ var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+
+
+
+
 // Require the routes in our controllers js file
-require("./controllers/articleController.js")(app);
+require("./routes/htmlRoutes")(app);
+require("./routes/apiRoutes")(app);
+
+
+
+// app.get('/', function(req, res) {
+
+//   db.Article.find({
+
+//     saved:false
+//   },
+  
+//   function(err, dbArticle) {
+//     if(err) {
+
+//       console.log(err);
+
+//     } else {
+
+//       res.render('index', {
+
+//         articles:dbArticle
+//       });
+//     }
+//   })
+// });
+
+
+
+
 
 app.listen(PORT, function() {
     // Log (server-side) when our server has started

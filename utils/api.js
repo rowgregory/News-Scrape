@@ -25,8 +25,9 @@ function scrape() {
             console.log(result);
             articles.push(result);
         });
+        return articles;
     });
-    return articles;
+    
 }
 
 module.exports = scrape;
