@@ -1,0 +1,11 @@
+.jumbotron{
+    background: url(images/climate1.jpg)!important;
+    background-repeat: repeat-x !important;
+    background-size:cover !important;
+    background-position: center !important;
+    
+}
+.containerz{
+    background:rgba(0, 0, 0, 0.7);
+    color:white;
+}
