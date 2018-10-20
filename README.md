@@ -19,7 +19,7 @@
      
 ## Demo Videos
 
- * []()
+ * ![](assets/images/news_SCRAPE.gif?raw=true)
 
  * ![]()
  
