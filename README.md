@@ -19,7 +19,7 @@
      
 ## Demo Videos
 
- * ![](images/News-Scrape-Google-Chrome-10_19_2018-11_20_49-PM.gif?raw=true)
+ * ![](public/images/News-Scrape-Google-Chrome-10_19_2018-11_20_49-PM.gif?raw=true)
 
  * ![]()
  
