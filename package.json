@@ -25,6 +25,7 @@
     "logger": "0.0.1",
     "mongoose": "^5.3.4",
     "morgan": "^1.9.1",
-    "request": "^2.88.0"
+    "request": "^2.88.0",
+    "router-express": "^1.5.2"
   }
 }
