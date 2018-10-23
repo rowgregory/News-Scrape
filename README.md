@@ -13,13 +13,13 @@
 
 ## Visit live on heroku
 
- * [News Scrape...coming soon](https://rowgregory.github.io)
+ * [News Scrape](https://newsscrapegr.herokuapp.com/)
 
  * ![]()
      
 ## Demo Videos
 
- * ![](public/images/News-Scrape-Google-Chrome-10_19_2018-11_20_49-PM.gif?raw=true)
+ * ![](public/images/News-Scrape.gif?raw=true)
 
  * ![]()
  

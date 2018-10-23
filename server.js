@@ -40,8 +40,6 @@ app.engine(
 
 app.set("view engine", "handlebars");
 
-
-
 app.get("/scrape", function(req, res){
   axios.get("http://www.nytimes.com/section/science").then(function (response) {
         var $ = cheerio.load(response.data);
@@ -115,16 +113,12 @@ app.post("/note/:id", function(req, res) {
       note ={
         title,
         body
-
   }
   
   // Create a new note and pass the req.body to the entry
   db.Note.create(note)
     .then(function(dbNote) {
-     
       db.Article.findOneAndUpdate(
-        
-
         { _id: articleId}, 
         { $push: { note: dbNote._id }},
         { new: true }
@@ -142,7 +136,6 @@ app.post("/note/:id", function(req, res) {
 
 app.get("/", function(req, res) {
   db.Article.find({}).then(function(dbArticles) {
-    
     res.render("index", {
       articles: dbArticles
     })
@@ -158,7 +151,6 @@ app.get('/saved', function(req, res) {
   db.Article.find({saved: true})
     .then(function(dbArticle) {
       var articleObj = {article: dbArticle};
-
       res.render('saved', articleObj)
     })
     .catch(function(err) {
@@ -169,7 +161,6 @@ app.get('/saved', function(req, res) {
 // save article
 app.put('/article/:id', function(req, res) {
   var id = req.params.id;
-
   // $set will create the field if the field does not exist. See the individual update operator reference for details.
   db.Article.findByIdAndUpdate(id, {saved:true})
     .then(function(dbArticle) {
@@ -191,7 +182,6 @@ app.delete("/notes/:id", function(req, res) {
 // remove article
 app.put('/article/remove/:id', (req, res)=>{
   let id = req.params.id;
-
   db.Article.findByIdAndUpdate(id, {saved: false})
   .then((dbArticle)=>{
       res.json(dbArticle);
