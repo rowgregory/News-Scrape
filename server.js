@@ -180,6 +180,27 @@ app.put('/article/:id', function(req, res) {
     })
 })
 
+app.delete("/notes/:id", function(req, res) {
+  db.Note.findByIdAndDelete({_id: req.params.id}).then(function (dbNote){
+    res.json(dbNote);
+  }).catch(function (err) {
+    res.json(err);
+  });
+});
+
+// remove article
+app.put('/article/remove/:id', (req, res)=>{
+  let id = req.params.id;
+
+  db.Article.findByIdAndUpdate(id, {saved: false})
+  .then((dbArticle)=>{
+      res.json(dbArticle);
+  })
+  .catch((err)=>{
+      res.json(err);
+  });
+});
+
 
 app.listen(PORT, function() {
     // Log (server-side) when our server has started

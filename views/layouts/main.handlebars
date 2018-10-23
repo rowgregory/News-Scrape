@@ -18,6 +18,9 @@
       <a role="button" class="btn btn-primary" href="/">News-Scraper</a>
     </div>
     <div class="nav-item">
+      <a id="scrape" class="btn btn-success btn-lg" href="#" role="button">Scrape new articles</a>
+    </div>
+    <div class="nav-item">
       <a id="savedArticles" role="button" class="btn btn-danger" href="/saved">Saved Articles</a>
     </div>
   </div>
@@ -26,10 +29,17 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="jumbotron">
-        <div class="containerz">
-            <h1 class="heading display-4">News Scrape</h1>
-            <p class="lead">This app allows users to create a web app that lets users view, save, and leave comments on the latest news.</p>
-            <a id="scrape" class="btn btn-primary btn-lg" href="#" role="button">Scrape</a>
+        <div class="col-sm-4 offset-sm-4 p-5 containerz">
+          <p>
+            <a class="btn btn-outline-dark directionsButton" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+              Directions
+            </a>
+          </p>
+          <div class="collapse" id="collapseExample">
+            <div class="card card-body directions">
+              Click the scrape new article button to load science related articles. Once the articles load, you can choose which ones to save. Click on the saved articles button to see your favorites. Saving notes to individual articles coming soon... 
+            </div>
+          </div>
         </div>
       </div>
     </div>

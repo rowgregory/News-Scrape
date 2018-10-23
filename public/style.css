@@ -1,12 +1,42 @@
+body{
+    background: rgb(217, 217, 248) !important;
+}
+
 .jumbotron{
-    background: url(images/climate1.jpg)!important;
+    background: url(images/climate2.jpg)!important;
     background-repeat: repeat-x !important;
     background-size:cover !important;
     background-position: center !important;
-    
+    text-align: center;
 }
-.containerz{
-    background:rgba(0, 0, 0, 0.7);
+
+.directions{
+    background:rgba(0, 0, 0, 0.7) !important;
     color:white;
 }
+
+.dataTitle{
+    text-align: center;
+}
+
+.directionsButton{
+    border:1px solid black !important;
+}
+#titleinput, #bodyinput, #savenote{
+    margin-bottom:10px !important;
+    
+}
+/* #titleinput:focus{
+    background: rgba(7, 66, 110, 0.7) !important;
+    color:orange;
+    
+} */
+/* #savenote{
+    width:100px;
+    padding:10px 0;
+    border-radius:10px;
+} */
+
+
+
 
