@@ -31,8 +31,8 @@ const getNotes = function () {
       console.log('pinged 2');
       console.log(data);
       
-      Object.keys(data).forEach(function(element) {
-        $('#comments').append(`<li><strong>${element.title}</strong><button id="deleteNote" class="delete btn btn-sm btn-danger m-1" data-id="${element._id}" data-article="${articleId}"disabled>remove</button><p>${element.body}</p></li>`);
+      data.notes.forEach(function(element) {
+        $('#comments').append(`<li><strong>${element.note.title}</strong><button id="deleteNote" class="delete btn btn-sm btn-danger m-1" data-id="${element._id}" data-article="${articleId}"disabled>remove</button><p>${element.body}</p></li>`);
       });
 
         // The title of the article

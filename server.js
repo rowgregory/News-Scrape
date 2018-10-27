@@ -94,10 +94,11 @@ app.get("/articles/:id", function(req, res) {
   var id = req.params.id;
   // console.log('Pinged');
   // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
-  db.Article.findById(id)
+  db.Article.findOne({_id: id})
     // ..and populate all of the notes associated with it
     .populate("note")
     .then(function(dbNote) {
+      console.log(dbNote);
       // If we were able to successfully find an Article with the given id, send it back to the client
       res.json(dbNote);
     })
@@ -109,11 +110,13 @@ app.get("/articles/:id", function(req, res) {
 
 // Route for saving/updating an Article's associated Note
 app.post("/note/:id", function(req, res) {
-  let {title, body, articleId} = req.body,
+  const {title, body, articleId} = req.body,
       note ={
         title,
         body
+        
   }
+  console.log(title);
   
   // Create a new note and pass the req.body to the entry
   db.Note.create(note)
