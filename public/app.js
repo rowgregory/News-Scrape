@@ -20,29 +20,31 @@ $('.btn-save').on('click', saveArticle);
 
 const getNotes = function () {
   $("#comments").empty();
+  $('#comments').append('<ul id="commentList"></ul>');
   var articleId = $(this).data('id');
   console.log('Pinged');
   
   $.ajax({
-    url: `/articles/${articleId}`,
+    url: `/notes/${articleId}`,
     method: 'GET',
   })
     .then(function(data) {
       console.log('pinged 2');
       console.log(data);
       
-      data.notes.forEach(function(element) {
-        $('#comments').append(`<li><strong>${element.note.title}</strong><button id="deleteNote" class="delete btn btn-sm btn-danger m-1" data-id="${element._id}" data-article="${articleId}"disabled>remove</button><p>${element.body}</p></li>`);
+      data.forEach(function(element) {
+        // console.log(element);
+        $('#commentList').append(`<li><strong>${element.title}</strong><button id="deleteNote" class="delete btn btn-sm btn-danger m-1" data-id="${element._id}" data-article="${articleId}">remove</button><p>${element.body}</p></li>`);
       });
 
         // The title of the article
-        $("#comments").append("<h3 class='dataTitle'>" + data.title + "</h3>");
+        $("#comments").append("<h3 class='dataTitle'> Add a comment</h3>");
         // An input to enter a new title
         $("#comments").append("<input id='titleinput' name='title' placeholder='Title' class='form-group'>");
         // A textarea to add a new note body
         $("#comments").append("<textarea id='bodyinput' name='body' placeholder='Comment'></textarea>");
         // A button to submit a new note, with the id of the article saved to it
-        $("#comments").append("<button data-id='" + data._id + "' id='savenote' class='btn btn-success'>Save Note</button>");
+        $("#comments").append("<button data-id='" + articleId + "' id='savenote' class='btn btn-success'>Save Note</button>");
       
       // If there's a note in the article
         if (data.note) {
@@ -68,7 +70,7 @@ const validation = () => {
   return valid;
 }
 
-$(document).on('click', '#savenote', function() {;
+$(document).on('click', '#savenote', function() {
 
   console.log('are we saving a note?');
   var thisId = $(this).attr('data-id');
@@ -81,7 +83,8 @@ $(document).on('click', '#savenote', function() {;
         // Value taken from title input
         title: $("#titleinput").val(),
         // Value taken from note textarea
-        body: $("#bodyinput").val()
+        body: $("#bodyinput").val(),
+        _articleId: thisId
       }
     })
       // With that done
@@ -96,6 +99,8 @@ $(document).on('click', '#savenote', function() {;
     } else {
       alert('Please fill all entries');
     }
+
+    
   });
 
   const deleteNote = function () {
@@ -110,7 +115,7 @@ $(document).on('click', '#savenote', function() {;
     })
   };
 
-  $('#deleteNote').on('click', deleteNote)
+  $(document).on('click', "#deleteNote", deleteNote);
 
   const removeArticle = function() {
     let id = $(this).data('id');

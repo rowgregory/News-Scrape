@@ -1,8 +1,8 @@
 const exp = require('express');
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const bodyParser = require('body-parser');  //incoming request stream into a req.body
+const mongoose = require('mongoose');  // library with functions including TCP//HTTPS 
 
-const axios = require('axios');
+const axios = require('axios');   // promise based HTTP client for the browser and node.js
 const cheerio = require('cheerio');
 
 const app = exp();
@@ -42,6 +42,7 @@ app.set("view engine", "handlebars");
 
 app.get("/scrape", function(req, res){
   axios.get("http://www.nytimes.com/section/science").then(function (response) {
+    ;
         var $ = cheerio.load(response.data);
         
 
@@ -108,12 +109,31 @@ app.get("/articles/:id", function(req, res) {
     });
 });
 
+app.get("/notes/:id", function(req, res) {
+  var id = req.params.id;
+  // console.log('Pinged');
+  // Using the id passed in the id parameter, prepare a query that finds the matching one in our db...
+  db.Note.find({_articleId: id})
+    // ..and populate all of the notes associated with it
+    .populate("note")
+    .then(function(dbNote) {
+      console.log(dbNote);
+      // If we were able to successfully find an Article with the given id, send it back to the client
+      res.json(dbNote);
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
+});
+
 // Route for saving/updating an Article's associated Note
 app.post("/note/:id", function(req, res) {
-  const {title, body, articleId} = req.body,
+  const {title, body, _articleId} = req.body,
       note ={
         title,
-        body
+        body,
+        _articleId
         
   }
   console.log(title);

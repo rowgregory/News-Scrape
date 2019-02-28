@@ -9,7 +9,12 @@ var NoteSchema = new Schema({
   // `title` is of type String
   title: String,
   // `body` is of type String
-  body: {type:String}
+  body: {type:String},
+
+  _articleId: {
+    type: Schema.Types.ObjectId,
+    ref: "Article"
+  }, 
   
 });
 
